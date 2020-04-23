@@ -9,5 +9,29 @@ license = "MIT OR Apache-2.0"
 keywords = ["sse", "event-source", "yew", "web", "webasm"]
 categories = ["wasm"]
 publish = false
+readme = "README.md"
+
+[features]
+default = [ "std_web" ]
+std_web = [ "yew/std_web", "stdweb", "stdweb-derive" ]
+web_sys = [ "yew/web_sys", "web-sys", "wasm-bindgen", "gloo-events" ]
 
 [dependencies]
+yew = "0.14.3"
+stdweb = { version = "0.4.20", optional = true }
+stdweb-derive = { version = "0.5.3", optional = true }
+wasm-bindgen = { version = "0.2.60", optional = true }
+cfg-if = "0.1"
+cfg-match = "0.2"
+gloo-events = { version = "0.1.1", optional = true }
+
+[dependencies.web-sys]
+optional = true
+version = "0.3.4"
+features = [
+  'Event',
+  'EventSource',
+  'EventSourceInit',
+  'EventListener',
+  'MessageEvent',
+]
