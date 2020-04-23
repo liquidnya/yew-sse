@@ -3,7 +3,11 @@ name = "yew-sse"
 version = "0.1.0"
 authors = ["liquidblock <liquidblock@users.noreply.github.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "EventSource bindings for yew used for handling of server-sent events (SSE)."
+repository = "https://github.com/liquidblock/yew-sse.git"
+license = "MIT OR Apache-2.0"
+keywords = ["sse", "event-source", "yew", "web", "webasm"]
+categories = ["wasm"]
+publish = false
 
 [dependencies]
