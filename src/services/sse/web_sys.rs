@@ -15,7 +15,7 @@ pub fn new_event_source_with_credentials(
 ) -> Result<EventSource, &'static str> {
     EventSource::new_with_event_source_init_dict(
         url,
-        &EventSourceInit::new().with_credentials(credentials),
+        EventSourceInit::new().with_credentials(credentials),
     )
     .map_err(|_| "couldn't aquire event source")
 }

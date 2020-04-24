@@ -1,6 +1,6 @@
 [package]
 name = "yew-sse"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["liquidblock <liquidblock@users.noreply.github.com>"]
 edition = "2018"
 description = "EventSource bindings for yew used for handling of server-sent events (SSE)."
@@ -12,7 +12,7 @@ publish = false
 readme = "README.md"
 
 [features]
-default = [ "std_web" ]
+default = []
 std_web = [ "yew/std_web", "stdweb", "stdweb-derive" ]
 web_sys = [ "yew/web_sys", "web-sys", "wasm-bindgen", "gloo-events" ]
 
