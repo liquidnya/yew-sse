@@ -64,9 +64,9 @@ pub fn new_event_source_with_credentials(
 }
 
 #[derive(Debug)]
-pub struct ClosingEventListenerHandle(Option<EventListenerHandle>);
+pub struct EventListener(Option<EventListenerHandle>);
 
-impl Drop for ClosingEventListenerHandle {
+impl Drop for EventListener {
     fn drop(&mut self) {
         if let Some(handle) = self.0.take() {
             handle.remove();
@@ -74,7 +74,7 @@ impl Drop for ClosingEventListenerHandle {
     }
 }
 
-impl From<EventListenerHandle> for ClosingEventListenerHandle {
+impl From<EventListenerHandle> for EventListener {
     fn from(handle: EventListenerHandle) -> Self {
         Self(Some(handle))
     }

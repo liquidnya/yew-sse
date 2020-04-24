@@ -41,9 +41,6 @@ pub enum ReadyState {
     Closed,
 }
 
-#[cfg(feature = "std_web")]
-type EventListener = ClosingEventListenerHandle;
-
 #[derive(Debug)]
 #[must_use]
 pub struct EventSourceTask {
