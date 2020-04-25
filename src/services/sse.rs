@@ -2,6 +2,7 @@ use super::Task;
 
 use cfg_if::cfg_if;
 use cfg_match::cfg_match;
+use std::convert::TryInto;
 
 cfg_if! {
     if #[cfg(feature = "std_web")] {
@@ -65,24 +66,43 @@ impl EventSourceService {
         Self {}
     }
 
-    pub fn open_url(
+    pub fn open<T>(
         &self,
-        url: &str,
+        url: T,
         callback: yew::Callback<(String, String)>,
         updates: yew::Callback<EventSourceUpdate>,
-    ) -> Result<EventSourceTask, &str> {
-        self.open_impl(new_event_source(url)?, callback, updates)
+    ) -> Result<EventSourceTask, &str>
+    where
+        T: TryInto<http::Uri>,
+    {
+        self.open_impl(
+            new_event_source(
+                &url.try_into()
+                    .map_err(|_| "Could not parse url")?
+                    .to_string(),
+            )?,
+            callback,
+            updates,
+        )
     }
 
-    pub fn open_url_with_credentials(
+    pub fn open_with_credentials<T>(
         &self,
-        url: &str,
+        url: T,
         credentials: bool,
         callback: yew::Callback<(String, String)>,
         updates: yew::Callback<EventSourceUpdate>,
-    ) -> Result<EventSourceTask, &str> {
+    ) -> Result<EventSourceTask, &str>
+    where
+        T: TryInto<http::Uri>,
+    {
         self.open_impl(
-            new_event_source_with_credentials(url, credentials)?,
+            new_event_source_with_credentials(
+                &url.try_into()
+                    .map_err(|_| "Could not parse url")?
+                    .to_string(),
+                credentials,
+            )?,
             callback,
             updates,
         )

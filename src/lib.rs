@@ -10,7 +10,7 @@
 //    clippy::restriction,
 //    clippy::pedantic,
     clippy::nursery,
-    clippy::cargo,
+//    clippy::cargo,
 )]
 
 pub mod services;
@@ -20,5 +20,7 @@ mod tests {
     #[test]
     fn it_works() {
         assert_eq!(2 + 2, 4);
+        let u: u32 = 5;
+        u.to_string();
     }
 }

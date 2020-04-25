@@ -4,4 +4,4 @@ pub mod sse;
 pub use self::sse::EventSourceService;
 
 #[doc(inline)]
-pub use yew::services::Task;
+pub use ::yew::services::Task;
