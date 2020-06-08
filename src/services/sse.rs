@@ -32,7 +32,7 @@ impl EventSourceTask {
     }
 }
 
-#[derive(Debug)]
+#[derive(Default, Debug)]
 pub struct EventSourceService {}
 
 #[derive(PartialEq, Debug)]
